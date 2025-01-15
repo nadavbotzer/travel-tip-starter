@@ -329,21 +329,8 @@ function onConfirm(confirmation) {
     gConfirm(confirmation)
     document.querySelector('.delete-confirmation').close()
 }
-// function onClearHistory() {
-//     renderModal('.h').then(decision => {
-//         if (!decision) return
-//         clearHistory()
-//         document.querySelector('.history article').innerHTML = ''
-//     })
-// }
 
 function renderModal() {
     document.querySelector('.delete-confirmation').showModal()
     return new Promise(resolve => gConfirm = resolve)
 }
-
-// function onUserDecision(decision) {
-//     gConfirm(decision)
-//     document.querySelectorAll('.active')
-//         .forEach(el => el.classList.remove('active'))
-// }

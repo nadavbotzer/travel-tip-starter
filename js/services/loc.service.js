@@ -52,7 +52,12 @@ function query() {
 
             if (gSortBy.rate !== undefined) {
                 locs.sort((p1, p2) => (p1.rate - p2.rate) * gSortBy.rate)
-            } else if (gSortBy.name !== undefined) {
+            } else if (gSortBy.creationTime !== undefined) {
+                console.log(gSortBy.rate)
+                locs.sort((p1, p2) => (p1.createdAt - p2.createdAt) * gSortBy.creationTime
+                )
+            }
+            else if (gSortBy.name !== undefined) {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
             }
 
@@ -99,6 +104,7 @@ function getLocCountByRateMap() {
 }
 
 function setSortBy(sortBy = {}) {
+    console.log('setting sortBy', sortBy)
     gSortBy = sortBy
 }
 
