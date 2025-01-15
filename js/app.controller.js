@@ -44,7 +44,7 @@ function renderLocs(locs) {
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
-                <span>${loc.name}</span> <span class="distance"></span>
+                <span>${loc.name}</span> <span class="distance">${loc.distance}</span>
                 <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
             </h4>
             <p class="muted">

@@ -71,7 +71,9 @@ function setDistances(userPos) {
         locations.forEach((loc) => {
             const locPos = { lat: loc.geo.lat, lng: loc.geo.lng }
             loc.distance = utilService.getDistance(locPos, userPos, 'K')
+            save(loc)
         })
+
     })
 }
 
