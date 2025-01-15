@@ -30,7 +30,8 @@ export const locService = {
     save,
     setFilterBy,
     setSortBy,
-    getLocCountByRateMap
+    getLocCountByRateMap,
+    setDistances
 }
 
 function query() {
@@ -63,6 +64,15 @@ function query() {
 
             return locs
         })
+}
+
+function setDistances(userPos) {
+    query().then((locations) => {
+        locations.forEach((loc) => {
+            const locPos = { lat: loc.geo.lat, lng: loc.geo.lng }
+            loc.distance = utilService.getDistance(locPos, userPos, 'K')
+        })
+    })
 }
 
 function getById(locId) {

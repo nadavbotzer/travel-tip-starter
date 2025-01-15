@@ -20,6 +20,7 @@ window.app = {
 }
 
 var gConfirm
+var gUserPos
 
 function onInit() {
     getFilterByFromQueryParams()
@@ -43,7 +44,7 @@ function renderLocs(locs) {
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
-                <span>${loc.name}</span>
+                <span>${loc.name}</span> <span class="distance"></span>
                 <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
             </h4>
             <p class="muted">
@@ -138,7 +139,9 @@ function onPanToUserPos() {
             unDisplayLoc()
             loadAndRenderLocs()
             flashMsg(`You are at Latitude: ${latLng.lat} Longitude: ${latLng.lng}`)
+            return latLng
         })
+        .then(locService.setDistances)
         .catch(err => {
             console.error('OOPs:', err)
             flashMsg('Cannot get your position')
